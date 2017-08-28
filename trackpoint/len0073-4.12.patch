@@ -1,18 +1,20 @@
-diff -Naur linux-4.12-orig/drivers/input/mouse/synaptics.c linux-4.12/drivers/input/mouse/synaptics.c
---- linux-4.12-orig/drivers/input/mouse/synaptics.c	2017-07-03 01:07:02.000000000 +0200
-+++ linux-4.12/drivers/input/mouse/synaptics.c	2017-08-18 22:48:04.761749793 +0200
-@@ -173,6 +173,7 @@
+diff --git a/drivers/input/mouse/synaptics.c b/drivers/input/mouse/synaptics.c
+index e979925..a7fc46b 100644
+--- a/drivers/input/mouse/synaptics.c
++++ b/drivers/input/mouse/synaptics.c
+@@ -173,6 +173,7 @@ static const char * const smbus_pnp_ids[] = {
  	"LEN0046", /* X250 */
  	"LEN004a", /* W541 */
  	"LEN200f", /* T450s */
-+	"LEN0073", /* X1 Carbon 5 */
++	"LEN0073", /* X1 Carbon G5 */
  	NULL
  };
  
-diff -Naur linux-4.12-orig/drivers/input/rmi4/rmi_smbus.c linux-4.12/drivers/input/rmi4/rmi_smbus.c
---- linux-4.12-orig/drivers/input/rmi4/rmi_smbus.c	2017-07-03 01:07:02.000000000 +0200
-+++ linux-4.12/drivers/input/rmi4/rmi_smbus.c	2017-08-18 22:49:17.198416292 +0200
-@@ -322,7 +322,7 @@
+diff --git a/drivers/input/rmi4/rmi_smbus.c b/drivers/input/rmi4/rmi_smbus.c
+index 225025a..2939a2f 100644
+--- a/drivers/input/rmi4/rmi_smbus.c
++++ b/drivers/input/rmi4/rmi_smbus.c
+@@ -322,7 +322,7 @@ static int rmi_smb_probe(struct i2c_client *client,
  	rmi_dbg(RMI_DEBUG_XPORT, &client->dev, "Smbus version is %d",
  		smbus_version);
  
