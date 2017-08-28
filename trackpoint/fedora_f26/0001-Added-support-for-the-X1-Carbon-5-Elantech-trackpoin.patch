@@ -1,0 +1,38 @@
+From 37c6214ef767944fba1ba14c9839444b097b7425 Mon Sep 17 00:00:00 2001
+From: Fedora Kernel Team <kernel-team@fedoraproject.org>
+Date: Mon, 28 Aug 2017 11:17:13 +0200
+Subject: [PATCH] Added support for the X1 Carbon 5 Elantech trackpoint
+
+---
+ drivers/input/mouse/synaptics.c | 1 +
+ drivers/input/rmi4/rmi_smbus.c  | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/input/mouse/synaptics.c b/drivers/input/mouse/synaptics.c
+index e979925..b7e4494 100644
+--- a/drivers/input/mouse/synaptics.c
++++ b/drivers/input/mouse/synaptics.c
+@@ -173,6 +173,7 @@ static const char * const smbus_pnp_ids[] = {
+ 	"LEN0046", /* X250 */
+ 	"LEN004a", /* W541 */
+ 	"LEN200f", /* T450s */
++	"LEN0073", /* X1 Carbon 5 */
+ 	NULL
+ };
+ 
+diff --git a/drivers/input/rmi4/rmi_smbus.c b/drivers/input/rmi4/rmi_smbus.c
+index 225025a..2939a2f 100644
+--- a/drivers/input/rmi4/rmi_smbus.c
++++ b/drivers/input/rmi4/rmi_smbus.c
+@@ -322,7 +322,7 @@ static int rmi_smb_probe(struct i2c_client *client,
+ 	rmi_dbg(RMI_DEBUG_XPORT, &client->dev, "Smbus version is %d",
+ 		smbus_version);
+ 
+-	if (smbus_version != 2) {
++	if (smbus_version != 2 && smbus_version != 3) {
+ 		dev_err(&client->dev, "Unrecognized SMB version %d\n",
+ 				smbus_version);
+ 		return -ENODEV;
+-- 
+2.13.5
+
