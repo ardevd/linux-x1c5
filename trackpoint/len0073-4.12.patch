@@ -1,0 +1,23 @@
+diff -Naur linux-4.12-orig/drivers/input/mouse/synaptics.c linux-4.12/drivers/input/mouse/synaptics.c
+--- linux-4.12-orig/drivers/input/mouse/synaptics.c	2017-07-03 01:07:02.000000000 +0200
++++ linux-4.12/drivers/input/mouse/synaptics.c	2017-08-18 22:48:04.761749793 +0200
+@@ -173,6 +173,7 @@
+ 	"LEN0046", /* X250 */
+ 	"LEN004a", /* W541 */
+ 	"LEN200f", /* T450s */
++	"LEN0073", /* X1 Carbon 5 */
+ 	NULL
+ };
+ 
+diff -Naur linux-4.12-orig/drivers/input/rmi4/rmi_smbus.c linux-4.12/drivers/input/rmi4/rmi_smbus.c
+--- linux-4.12-orig/drivers/input/rmi4/rmi_smbus.c	2017-07-03 01:07:02.000000000 +0200
++++ linux-4.12/drivers/input/rmi4/rmi_smbus.c	2017-08-18 22:49:17.198416292 +0200
+@@ -322,7 +322,7 @@
+ 	rmi_dbg(RMI_DEBUG_XPORT, &client->dev, "Smbus version is %d",
+ 		smbus_version);
+ 
+-	if (smbus_version != 2) {
++	if (smbus_version != 2 && smbus_version != 3) {
+ 		dev_err(&client->dev, "Unrecognized SMB version %d\n",
+ 				smbus_version);
+ 		return -ENODEV;
